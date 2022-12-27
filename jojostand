@@ -1026,7 +1026,7 @@ CreateAction("DropVoid", function() MoveTo(0,-6,0) wait(0.5) game:GetService("Vi
 CreateAction("DropJail", function() MoveTo(-336, 22, -101) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)--/---------------------------------------------------------------------------------------------\--/ Commands :
 CreateAction("DropTrap", function() MoveTo(-800.586, -38.0927, -886.867) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 --/---------------------------------------------------------------------------------------------\--/ Commands :
-Create("!summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
+Create("!summon", function() Chat("I am waiting for your commands master!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
 Create("!summon", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!summon", function() wait(2) local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew if CurrentCrew.Value == CurrentOwnerCrew.Value then Stand.Action = "Summoned" else Crew(true,CurrentOwnerCrew.Value) end end)
 Create("/e summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) Stand.Action = "Summoned" end)
