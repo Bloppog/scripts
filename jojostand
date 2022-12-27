@@ -1043,7 +1043,7 @@ Create("!cashdrop", function() Stand.Action = "Crew" Play(8655611378, true) Chat
 Create("!cashdrop", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!save", function () Stand.Action = "Crew" Play(8655611378, true) Equip("Combat") Stand.Action = "Save" if OWNER.Character.BodyEffects["K.O"].Value == true then Chat("I wont let you die!") elseif OWNER.Character.BodyEffects["K.O"].Value == false then Chat("You are not knocked!") end end) 
 Create("!save", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("test", function() Equip("Combat") Chat("working") end)
+Create("test", function() Chat("working") end)
 Create("test", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!lowgfx", function() Chat("Stand will be frozen for a second!") Stand.Action = "Crew" Stand.Action = "LowGFX" Equip("Combat") wait(4) Chat("Low GFX enabled!") end)
 Create("!lowgfx", function() wait(9) Stand.Action = "Summoned" end)
@@ -1120,6 +1120,7 @@ CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = ""
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
 Create("!forceconnect", function() Chat("Attempting to connect...") end)
+Create("!unequip", function() Stand.Action = "" Unequip("Combat") end end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
 Create("Haha", function() Stand.Action = "Summoned" Play(9127270745, true) end)
