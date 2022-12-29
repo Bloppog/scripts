@@ -1080,7 +1080,7 @@ CreateAction("DropAdmin", function() MoveTo(-800.586, -38.0927, -886.867) wait(0
 CreateAction("DropVoid", function() MoveTo(0,-6,0) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 CreateAction("DropJail", function() MoveTo(-336, 22, -101) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)--/---------------------------------------------------------------------------------------------\--/ Commands :
 CreateAction("DropTrap", function() MoveTo(-800.586, -38.0927, -886.867) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
-CreateAction("Fling", function() LoopFling() wait(3) Stand.Action = "Summoned" end)
+CreateAction("Fling", function() useCommand.fling() wait(3) Stand.Action = "Summoned" end)
 --/---------------------------------------------------------------------------------------------\--/ Commands :
 Create("!summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
 Create("!summon", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
@@ -1176,7 +1176,7 @@ CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = ""
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
 Create("!forceconnect", function() Chat("Attempting to connect...") end)
-CreateTargetAbility("!fling", function() Chat("Flinging.") Stand.Action = "Fling" wait(4) Stand.Action = "Summoned" end)
+CreateTargetAbility("!fling", function() Chat("Flinging.") Stand.Action = "Fling" wait(3) Stand.Action = "Summoned" end)
 Create("!fling", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
