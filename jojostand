@@ -1,5 +1,7 @@
 --//--------------------------------------------------------------------------------------------\\--
 --// Stand Creator 1.1.2 \\--
+getgenv().useCommand = {}
+getgenv().arguments = {}
 if not game['Loaded'] or not game:GetService("Players").LocalPlayer then 
     game['Loaded']:Wait();
     game:WaitForChild(game:GetService('Players'));
@@ -689,8 +691,6 @@ function useCommand.fling()
 			cmdlp.Character.Humanoid.Sit = true
 			wait(0.1)
 			cmdlp.Character.Humanoid.Jump = true
-			Chat("Flung "..Target)
-		else
 			Chat("Player does not exist!")
 		end
 	end
