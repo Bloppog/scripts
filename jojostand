@@ -643,21 +643,6 @@ function MoveTo(X,Y,Z)
     STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(X,Y,Z)
 end
 --//------------------------------------------------------------------------------------------\\--
-function LoopFling()
-	if arguments[2] then
-		target = findplr(arguments[2])
-		if target then
-			while LoopFling do
-				arguments = {"fling",target.Name}
-				useCommand.fling()
-				repeat wait(.1) until target.Character ~= nil and target.Character:FindFirstChild('HumanoidRootPart')
-			end
-		else
-			Chat("Player does not exist!")    
-		end
-	end
-end
---//------------------------------------------------------------------------------------------\\--
 function useCommand.fling()
 	if arguments[2] then
 		target = findplr(arguments[2])
@@ -691,8 +676,12 @@ function useCommand.fling()
 			cmdlp.Character.Humanoid.Sit = true
 			wait(0.1)
 			cmdlp.Character.Humanoid.Jump = true
+			Chat("Flung")
+		else
 			Chat("Player does not exist!")
 		end
+	else
+		Chat("2 arguments are needed for this command!")
 	end
 end
 --//------------------------------------------------------------------------------------------\\--
