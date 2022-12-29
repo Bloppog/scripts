@@ -644,40 +644,43 @@ function MoveTo(X,Y,Z)
 end
 --//------------------------------------------------------------------------------------------\\--
 function useCommand.fling()
-    if arguments[2] then
-        target = findplr(arguments[2])
-        if target then
-            noclip()
-            PF = 99
-            PF = PF*10
-            local BT = Instance.new("BodyThrust")
-            cmdhrp = cmdlp.Character.HumanoidRootPart
-            BT.Parent = cmdhrp
-            BT.Force = Vector3.new(PF, 0, PF)
-            BT.Location = cmdhrp.Position
-            for i,player in pairs(cmdlp.Character:GetChildren()) do
-                if player.ClassName == "Part" then
-                    player.CustomPhysicalProperties = PhysicalProperties.new(0, 0.3, 0.5)
-                end
-            end
-            cmdhrp.CFrame = target.Character.HumanoidRootPart.CFrame CFrame.Angles(0, math.rad(0), 0) * CFrame.new(0, 0, 0)
-            wait(1)
-            for i,player in pairs(cmdlp.Character:GetChildren()) do
-                if player.ClassName == "Part" then
-                    player.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5)
-                end
-            end
-            if Noclipping then
-                Noclipping:Disconnect()
-            end
-            Clip = true
-            cmdlp.Character.HumanoidRootPart.BodyThrust:Destroy()
-            cmdlp.Character.Humanoid.PlatformStand = true
-            cmdlp.Character.Humanoid.Sit = true
-            wait(0.1)
-            cmdlp.Character.Humanoid.Jump = true
-        end
-    end
+	if arguments[2] then
+		target = findplr(arguments[2])
+		if target then
+			noclip()
+			PF = 99
+			PF = PF*10
+			local BT = Instance.new("BodyThrust")
+			cmdhrp = cmdlp.Character.HumanoidRootPart
+			BT.Parent = cmdhrp
+			BT.Force = Vector3.new(PF, 0, PF)
+			BT.Location = cmdhrp.Position
+			for i,player in pairs(cmdlp.Character:GetChildren()) do
+				if player.ClassName == "Part" then
+					player.CustomPhysicalProperties = PhysicalProperties.new(0, 0.3, 0.5)
+				end
+			end
+			cmdhrp.CFrame = target.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(0), 0) * CFrame.new(0, 0, 0)
+			wait(1)
+			for i,player in pairs(cmdlp.Character:GetChildren()) do
+				if player.ClassName == "Part" then
+					player.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5)
+				end
+			end
+			if Noclipping then
+				Noclipping:Disconnect()
+			end
+			Clip = true
+			cmdlp.Character.HumanoidRootPart.BodyThrust:Destroy()
+			cmdlp.Character.Humanoid.PlatformStand = true
+			cmdlp.Character.Humanoid.Sit = true
+			wait(0.1)
+			cmdlp.Character.Humanoid.Jump = true
+			Chat("Flung")
+		else
+			Chat("Player does not exist!")
+		end
+	end
 end
 --//------------------------------------------------------------------------------------------\\--
 function Equip(Tool)
@@ -1160,7 +1163,7 @@ CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = ""
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
 Create("!forceconnect", function() Chat("Attempting to connect...") end)
-CreateTargetAbility("!fling", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Flinging.") wait(2) Stand.Action = "Summoned" end)
+CreateTargetAbility("!fling", function() Stand.Action = "Fling" wait(3) Stand.Action = "Summoned" end)
 Create("!fling", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
