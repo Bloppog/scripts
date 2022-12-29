@@ -680,8 +680,6 @@ function useCommand.fling()
 		else
 			Chat("Player does not exist!")
 		end
-	else
-		Chat("2 arguments are needed for this command!")
 	end
 end
 --//------------------------------------------------------------------------------------------\\--
@@ -1165,7 +1163,7 @@ CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = ""
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
 Create("!forceconnect", function() Chat("Attempting to connect...") end)
-CreateTargetAbility("!fling", function() Chat("Flinging.") Stand.Action = "Fling" wait(3) Stand.Action = "Summoned" end)
+CreateTargetAbility("!fling", function() Stand.Action = "Fling" wait(3) Stand.Action = "Summoned" end)
 Create("!fling", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
