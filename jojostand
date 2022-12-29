@@ -645,10 +645,10 @@ end
 --//------------------------------------------------------------------------------------------\\--
 function LoopFling()
 	if arguments[2] then
-		Target = findplr(arguments[2])
-		if Target then
+		target = findplr(arguments[2])
+		if target then
 			while LoopFling do
-				arguments = {"fling",Target}
+				arguments = {"fling",target.Name}
 				useCommand.fling()
 				repeat wait(.1) until target.Character ~= nil and target.Character:FindFirstChild('HumanoidRootPart')
 			end
@@ -660,8 +660,8 @@ end
 --//------------------------------------------------------------------------------------------\\--
 function useCommand.fling()
 	if arguments[2] then
-		Target = findplr(arguments[2])
-		if Target then
+		target = findplr(arguments[2])
+		if target then
 			noclip()
 			PF = 99
 			PF = PF*10
