@@ -642,8 +642,8 @@ function MoveTo(X,Y,Z)
 end
 --//------------------------------------------------------------------------------------------\\--
 function LoopFling()
-	if arguments[1] then
-		Target = findplr(arguments[1])
+	if arguments[2] then
+		Target = findplr(arguments[2])
 		if Target then
 			while LoopFling do
 				arguments = {"fling",Target}
@@ -657,8 +657,8 @@ function LoopFling()
 end
 --//------------------------------------------------------------------------------------------\\--
 function useCommand.fling()
-	if arguments[1] then
-		Target = findplr(arguments[1])
+	if arguments[2] then
+		Target = findplr(arguments[2])
 		if Target then
 			noclip()
 			PF = 99
