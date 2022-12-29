@@ -644,41 +644,36 @@ function MoveTo(X,Y,Z)
 end
 --//------------------------------------------------------------------------------------------\\--
 function useCommand.fling()
+-- Settings
+local Settings = {
 	if arguments[2] then
 		target = findplr(arguments[2])
 		if target then
-			noclip()
-			PF = 99
-			PF = PF*10
-			local BT = Instance.new("BodyThrust")
-			cmdhrp = cmdlp.Character.HumanoidRootPart
-			BT.Parent = cmdhrp
-			BT.Force = Vector3.new(PF, 0, PF)
-			BT.Location = cmdhrp.Position
-			for i,player in pairs(cmdlp.Character:GetChildren()) do
-				if player.ClassName == "Part" then
-					player.CustomPhysicalProperties = PhysicalProperties.new(0, 0.3, 0.5)
-				end
-			end
-			cmdhrp.CFrame = target.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(0), 0) * CFrame.new(0, 0, 0)
-			wait(1)
-			for i,player in pairs(cmdlp.Character:GetChildren()) do
-				if player.ClassName == "Part" then
-					player.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5)
-				end
-			end
-			if Noclipping then
-				Noclipping:Disconnect()
-			end
-			Clip = true
-			cmdlp.Character.HumanoidRootPart.BodyThrust:Destroy()
-			cmdlp.Character.Humanoid.PlatformStand = true
-			cmdlp.Character.Humanoid.Sit = true
-			wait(0.1)
-			cmdlp.Character.Humanoid.Jump = true
-		end
-	end
+}
+
+-- Objects
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local LocalPlayer = Players.LocalPlayer
+local Target = Players:FindFirstChild(Settings.target)
+
+local BodyAngularVelocity = Instance.new("BodyAngularVelocity")
+BodyAngularVelocity.AngularVelocity = Vector3.new(10^6, 10^6, 10^6)
+BodyAngularVelocity.MaxTorque = Vector3.new(10^6, 10^6, 10^6)
+BodyAngularVelocity.P = 10^6
+
+-- Start
+if not Target then return end
+BodyAngularVelocity.Parent = LocalPlayer.Character.HumanoidRootPart
+
+while Target.Character.HumanoidRootPart and LocalPlayer.Character.HumanoidRootPart do
+   RunService.RenderStepped:Wait()
+   LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * LocalPlayer.Character.HumanoidRootPart.CFrame.Rotation
+   LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new()
 end
+   
+BodyAngularVelocity.Parent = nil
 --//------------------------------------------------------------------------------------------\\--
 function Equip(Tool)
     if STAND.Character:FindFirstChildWhichIsA("Tool") then
