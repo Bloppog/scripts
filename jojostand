@@ -1176,7 +1176,7 @@ CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = ""
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
 Create("!forceconnect", function() Chat("Attempting to connect...") end)
-Create"!fling", function() Stand.Action = "Fling" end)
+Create("!fling", function() Stand.Action = "Fling" wait(4) Stand.Action = "Summoned" end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
 Create("Haha", function() Stand.Action = "Summoned" Play(9127270745, true) end)
@@ -1241,3 +1241,4 @@ Create("!commands", function() wait(156) Chat("!drop admin -- Drops target at ad
 Create("!commands", function() wait(160) Chat("!drop casino -- Drops target at void") end)
 Create("!commands", function() wait(164) Chat("!drop jail -- Drops target at jail") end)
 Create("!commands", function() wait(168) Chat("Disable commands by using !summon") end)
+Create("!commands", function() wait(172) Chat("Fling player using !fling plr") end)
