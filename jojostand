@@ -649,7 +649,7 @@ function useCommand.fling()
         if target then
             noclip()
             PF = 99
-            PF = PF10
+            PF = PF*10
             local BT = Instance.new("BodyThrust")
             cmdhrp = cmdlp.Character.HumanoidRootPart
             BT.Parent = cmdhrp
