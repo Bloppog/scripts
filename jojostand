@@ -641,6 +641,61 @@ function MoveTo(X,Y,Z)
     STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(X,Y,Z)
 end
 --//------------------------------------------------------------------------------------------\\--
+function LoopFling()
+	if arguments[1] then
+		Target = findplr(arguments[1])
+		if Target then
+			while LoopFling do
+				arguments = {"fling",Target}
+				useCommand.fling()
+				repeat wait(.1) until target.Character ~= nil and target.Character:FindFirstChild('HumanoidRootPart')
+			end
+		else
+			Chat("Player does not exist!")    
+		end
+	end
+end
+--//------------------------------------------------------------------------------------------\\--
+function useCommand.fling()
+	if arguments[1] then
+		Target = findplr(arguments[1])
+		if Target then
+			noclip()
+			PF = 99
+			PF = PF*10
+			local BT = Instance.new("BodyThrust")
+			cmdhrp = cmdlp.Character.HumanoidRootPart
+			BT.Parent = cmdhrp
+			BT.Force = Vector3.new(PF, 0, PF)
+			BT.Location = cmdhrp.Position
+			for i,player in pairs(cmdlp.Character:GetChildren()) do
+				if player.ClassName == "Part" then
+					player.CustomPhysicalProperties = PhysicalProperties.new(0, 0.3, 0.5)
+				end
+			end
+			cmdhrp.CFrame = target.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(0), 0) * CFrame.new(0, 0, 0)
+			wait(1)
+			for i,player in pairs(cmdlp.Character:GetChildren()) do
+				if player.ClassName == "Part" then
+					player.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5)
+				end
+			end
+			if Noclipping then
+				Noclipping:Disconnect()
+			end
+			Clip = true
+			cmdlp.Character.HumanoidRootPart.BodyThrust:Destroy()
+			cmdlp.Character.Humanoid.PlatformStand = true
+			cmdlp.Character.Humanoid.Sit = true
+			wait(0.1)
+			cmdlp.Character.Humanoid.Jump = true
+			Chat("Flung "..Target)
+		else
+			Chat("Player does not exist!")
+		end
+	end
+end
+--//------------------------------------------------------------------------------------------\\--
 function Equip(Tool)
     if STAND.Character:FindFirstChildWhichIsA("Tool") then
         STAND.Character.Humanoid:UnequipTools()
@@ -1025,6 +1080,7 @@ CreateAction("DropAdmin", function() MoveTo(-800.586, -38.0927, -886.867) wait(0
 CreateAction("DropVoid", function() MoveTo(0,-6,0) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 CreateAction("DropJail", function() MoveTo(-336, 22, -101) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)--/---------------------------------------------------------------------------------------------\--/ Commands :
 CreateAction("DropTrap", function() MoveTo(-800.586, -38.0927, -886.867) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
+CreateAction("Fling", function() LoopFling() wait(3) Stand.Action = "Summoned" end)
 --/---------------------------------------------------------------------------------------------\--/ Commands :
 Create("!summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
 Create("!summon", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
