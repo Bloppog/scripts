@@ -2003,7 +2003,7 @@ CreateAction(
 CreateAction(
     "DropJail",
     function()
-        MoveTo(-336, 22, -101)
+        MoveTo(-326, 22, -87)
         wait(0.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "G", false, game)
         wait(1)
