@@ -3088,6 +3088,28 @@ Create(
         )
     end
 )
+Create(
+    "!drop trap",
+    function()
+        Stand.Action = "Crew"
+        Play(8655611378, true)
+        Chat("Dropping Target!")
+        wait(2)
+        Stand.Action = "DropTrap"
+    end
+)
+Create(
+    "!drop trap",
+    function()
+        Stand.Action = "Crew"
+        pcall(
+            function()
+                game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL")
+                game:GetService("RunService"):UnbindFromRenderStep("GRAB")
+            end
+        )
+    end
+)
 CreateTargetAbility(
     "!kill",
     function()
