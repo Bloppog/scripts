@@ -1993,7 +1993,7 @@ CreateAction(
 CreateAction(
     "DropVoid",
     function()
-        MoveTo(-907, 101, 589)
+        MoveTo(-1042.91064453125, 80.41064453125, -252.98155212402344)
         wait(0.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "G", false, game)
         wait(1)
