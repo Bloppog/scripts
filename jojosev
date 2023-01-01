@@ -2014,7 +2014,7 @@ CreateAction(
 CreateAction(
     "DropTrap",
     function()
-        MoveTo(161, -42, 161)
+        MoveTo(170, -42, 353)
         wait(0.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "G", false, game)
         wait(1)
