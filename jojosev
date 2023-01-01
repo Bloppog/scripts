@@ -1993,7 +1993,7 @@ CreateAction(
 CreateAction(
     "DropVoid",
     function()
-        MoveTo(0, -6, 0)
+        MoveTo(-907, 101, 589)
         wait(0.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "G", false, game)
         wait(1)
@@ -2014,7 +2014,7 @@ CreateAction(
 CreateAction(
     "DropTrap",
     function()
-        MoveTo(-800.586, -38.0927, -886.867)
+        MoveTo(-751, 62, 341)
         wait(0.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "G", false, game)
         wait(1)
